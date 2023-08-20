@@ -9,7 +9,6 @@ const AddExpenseForm = () => {
 
     const onSubmit = (event) => {
         event.preventDefault();
-        
         const expense = {
             id: uuidv4(),
             name: name,
@@ -20,35 +19,43 @@ const AddExpenseForm = () => {
             type: 'ADD_EXPENSE',
             payload: expense,
         });
+        setName('');
+        setCost('');
     };
 
     return (
         <form onSubmit={onSubmit}>
             <div className='row'>
                 <div className='col-sm'>
-                    <label for='name'>Name</label>
+                    <label htmlFor='name'>Name</label>
                     <input 
-                        required='required' 
+                        required
                         type='text' 
                         className='form-control' 
                         id='name' 
-                        value = {name}
+                        value={name}
                         onChange={(event) => setName(event.target.value)}
-                    ></input>
+                    />
                 </div>
                 <div className='col-sm'>
-                    <label for='cost'>Cost</label>
+                    <label htmlFor='cost'>Cost</label>
                     <input 
-                        required='required' 
+                        required
                         type='text' 
                         className='form-control' 
                         id='cost'
-                        value = {cost}
+                        value={cost}
                         onChange={(event) => setCost(event.target.value)}
-                    ></input>
+                    />
                 </div>
                 <div className='col-sm'>
-                    <button type='submit' className='btn btn-primary'>Save</button>
+                    <button 
+                        type='button' 
+                        className='btn btn-primary'
+                        onClick={onSubmit}
+                    >
+                        Save
+                    </button>
                 </div>
             </div>
         </form>

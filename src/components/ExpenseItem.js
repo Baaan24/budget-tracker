@@ -1,9 +1,9 @@
-import React, {useContext} from 'react';
+import React, { useContext } from 'react';
 import { TiDelete } from 'react-icons/ti';
 import { AppContext } from '../context/AppContext';
 
 const ExpenseItem = (props) => {
-    const {dispatch} = useContext(AppContext);
+    const { dispatch } = useContext(AppContext);
 
     const handleDeleteExpense = () => {
         dispatch({
@@ -19,7 +19,12 @@ const ExpenseItem = (props) => {
                 <span className='badge badge-primary badge-pill mr-3'>
                     ${props.cost}
                 </span>
-                <TiDelete size='1.5em' onClick={handleDeleteExpense}></TiDelete>
+                <button
+                    className='btn btn-danger btn-sm'
+                    onClick={handleDeleteExpense}
+                >
+                    <TiDelete size='1.5em' />
+                </button>
             </div>
         </li>
     );
